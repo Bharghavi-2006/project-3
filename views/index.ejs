@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Birthday API</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
+    <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>The Birthday API</h1>
+    
+    <h2>Search a Birthday</h2>
+    <form id="searchForm">
+        <input type="text" id="searchName" placeholder="Enter the name to search">
+        <button type="submit">Search</button>
+    </form>
+    <p id="searchResult"></p>
+    <br><br><br>
+
+    <h2>Add a Birthday</h2>
+    <form id="birthdayForm">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" placeholder="Enter the person's name" required>
+
+        <label for="birthday">Birthday</label>
+        <input type="date" id="birthday" name="birthday" required>
+        
+        <button type="submit">Add Birthday</button>
+    </form>
+    <br><br><br>
+
+    <h2>Birthday List</h2>
+    <ul id="birthdayList">
+        <% birthdays.forEach(function(birthday) { %>
+        <li data-name="<%= birthday.name %>">
+            <span><%= birthday.name %> - <%= birthday.birthday.toDateString() %></span>
+            <button class="update-button">Update</button>
+            <button class="delete-button">Delete</button>
+        </li>
+        <% }); %>
+    </ul>
+
+    <script src="/assets/index.js"></script>
+</body>
+</html>
