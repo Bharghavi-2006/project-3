@@ -39,6 +39,7 @@ app.post('/birthday', urlencodedParser, function (req, res) {
 });
 
 app.delete('/birthday/:name', function (req, res) {
+    console.log('Delete request for:', req.params.name);
     //delete the requested item from mongodb
     BirthdayModel.findOneAndDelete({ name : req.params.name} ).then((deleted) => {
             if (!deleted) {
@@ -51,6 +52,7 @@ app.delete('/birthday/:name', function (req, res) {
 
 //Update a birthday by name 
 app.put('/birthday/:name', urlencodedParser, function (req, res){
+    console.log('Update request for:', req.params.name);
     BirthdayModel.findOneAndUpdate(
         { name : req.params.name},
         { $set: { birthday: req.body.birthday } },
@@ -66,6 +68,7 @@ app.put('/birthday/:name', urlencodedParser, function (req, res){
 
 //Search for a birthday by name
 app.get('/birthday/:name', function (req, res) {
+    console.log('Search request for:', req.params.name);
     BirthdayModel.findOne({ name: req.params.name }).then((birthday) => {
             if (!birthday) {
                 res.status(404).send('Birthday not found.');
