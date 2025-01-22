@@ -30,7 +30,7 @@ $(document).ready(function(){
             var name = $(this).closest('li').data('name');
             $.ajax({
                 type: 'DELETE',
-                url: '/birthday/' + encodeURIcomponent (name),
+                url: '/birthday/' + encodeURIComponent (name),
                 success: function () {
                     //do something with frontend framework
                     location.reload();
@@ -49,7 +49,7 @@ $(document).ready(function(){
         if (newDate) {
             $.ajax({
                 type: 'PUT',
-                url: '/birthday/' + encodeURIcomponent (name),
+                url: '/birthday/' + encodeURIComponent (name),
                 data: { birthday: newDate },
                 success: function () {
                     location.reload();
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'GET',
-            url: '/birthday/' + encodeURIcomponent (name),
+            url: '/birthday/' + encodeURIComponent (name),
             success: function (data) {
                 if (data) {
                     $('#searchResult').text(`${data.name}'s birthday is on ${new Date(data.birthday).toDateString()}`);
